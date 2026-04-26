@@ -3,29 +3,53 @@ import { QUESTIONS, ANSWER_OPTIONS, scoreToProfile } from '../data/questions.js'
 import { ACTIONS } from '../data/actions.js'
 import { TIERS, getTier } from '../data/tiers.js'
 
-const PRESET_CLIENTS = [
-  { id: 'custom', label: 'Custom org name', defaultName: '', defaultTier: 'medium' },
-  { id: 'bronxworks', label: 'BronxWorks', defaultName: 'BronxWorks', defaultTier: 'large' },
-  { id: 'glwd', label: "God's Love We Deliver", defaultName: "God's Love We Deliver", defaultTier: 'large' },
-  { id: 'ceo', label: 'Center for Employment Opportunities', defaultName: 'Center for Employment Opportunities', defaultTier: 'large' },
-  { id: 'helpusa', label: 'HELP USA', defaultName: 'HELP USA', defaultTier: 'large' },
-  { id: 'ucs', label: 'Union of Concerned Scientists', defaultName: 'Union of Concerned Scientists', defaultTier: 'large' },
+const SECTORS = [
+  { id: 'unspecified', label: 'No sector specified', context: '' },
+  { id: 'human_services', label: 'Human Services', context: 'food assistance, housing, workforce, family services, immigrant services' },
+  { id: 'health', label: 'Healthcare & Community Health', context: 'FQHCs, community clinics, mental health, hospice, public health' },
+  { id: 'arts_culture', label: 'Arts & Culture', context: 'museums, theater, music, dance, libraries, historical societies' },
+  { id: 'education_workforce', label: 'Education & Workforce Development', context: 'K-12, higher ed, after-school, adult ed, job training' },
+  { id: 'environment', label: 'Environment & Animal Welfare', context: 'conservation, climate, wildlife, animal rescue' },
+  { id: 'civic_advocacy', label: 'Civic, Advocacy & Legal', context: 'policy, civil rights, legal aid, voter engagement, social justice' },
+  { id: 'faith_based', label: 'Faith-based / Religious', context: 'congregations, religious networks, faith-rooted social services' },
+  { id: 'grantmaking', label: 'Foundation / Grantmaking', context: 'private foundations, community foundations, giving circles' },
+  { id: 'capacity_building', label: 'Capacity Building / Intermediary', context: 'sector support, training providers, networks of nonprofits' },
+  { id: 'international', label: 'International / Global Development', context: 'humanitarian aid, global health, international advocacy' },
+  { id: 'other', label: 'Other / Multiple sectors', context: '' },
 ]
 
+const sectorSpecificStakes = (sectorId) => {
+  switch (sectorId) {
+    case 'human_services':
+      return 'The data we hold is on people in real material vulnerability — clients of food assistance, families in housing transitions, undocumented community members, survivors of violence. The "reasonable defensive effort" standard hits hardest when the data is most sensitive.'
+    case 'health':
+      return 'We handle protected health information under HIPAA. Patient trust and regulatory exposure are inseparable. AI-accelerated discovery of vulnerabilities in EHR-adjacent systems and connected medical devices changes our risk model materially.'
+    case 'arts_culture':
+      return 'Donor and member privacy matters more than payment-card security in our context. A donor list breach erodes the trust that makes our work possible. Cultural institutions also carry archival and intellectual-property exposure that AI-accelerated attackers can monetize.'
+    case 'education_workforce':
+      return 'Student records (FERPA), participant employment data, and outcomes data tied to government contracts create overlapping compliance exposure. Many of the people our programs serve are at the most vulnerable point in their economic trajectory.'
+    case 'environment':
+      return 'Activist staff and partner organizations face elevated targeting from state and corporate actors. AI-accelerated reconnaissance and credential abuse change the calculus on who needs phishing-resistant authentication and segregated infrastructure.'
+    case 'civic_advocacy':
+      return 'We work with people who face elevated risk from disclosure: domestic violence survivors, undocumented community members, civil rights plaintiffs, voters in contested jurisdictions. Our threat model includes adversaries with resources, not just opportunists.'
+    case 'faith_based':
+      return 'Pastoral records, member directories, and giving data carry a trust dimension beyond compliance. Many of our communities include people whose immigration status, sexuality, or family circumstances must remain private.'
+    case 'grantmaking':
+      return 'We sit in a network of grantee organizations that often operate below the Cyber Poverty Line. Our role in the ecosystem is partly to model and partly to fund the security capacity that the sector needs.'
+    case 'capacity_building':
+      return 'Our risk model includes the trust placed in us by client organizations. A breach in our systems is also a breach in our clients\' trust that working with us is safe.'
+    case 'international':
+      return 'Field operations, partner organizations in restrictive environments, and beneficiary data create a threat model that includes state actors, not just opportunists. Communications security and data residency are first-order concerns.'
+    default:
+      return ''
+  }
+}
+
 export default function BoardBriefing({ tier, setTier, answers }) {
-  const [orgName, setOrgName] = useState('your organization')
-  const [preset, setPreset] = useState('custom')
+  const [sectorId, setSectorId] = useState('unspecified')
   const [briefer, setBriefer] = useState('')
   const tierObj = getTier(tier)
-
-  const handlePreset = (id) => {
-    setPreset(id)
-    const p = PRESET_CLIENTS.find((c) => c.id === id)
-    if (p && p.id !== 'custom') {
-      setOrgName(p.defaultName)
-      setTier(p.defaultTier)
-    }
-  }
+  const sector = SECTORS.find((s) => s.id === sectorId) || SECTORS[0]
 
   const score = useMemo(() => {
     let s = 0
@@ -47,7 +71,7 @@ export default function BoardBriefing({ tier, setTier, answers }) {
   noOrPartialQs.forEach((q) => q.relatedActions.forEach((id) => recommendedActionIds.add(id)))
   const topActions = ACTIONS.filter((a) => recommendedActionIds.has(a.id)).slice(0, 5)
 
-  const briefingText = generateBriefing({ orgName, tier, tierObj, score, topActions, briefer, hasAnswers: Object.keys(answers).length > 0 })
+  const briefingText = generateBriefing({ sector, tier, tierObj, score, topActions, briefer, hasAnswers: Object.keys(answers).length > 0 })
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(briefingText)
@@ -58,7 +82,8 @@ export default function BoardBriefing({ tier, setTier, answers }) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `mythos-ready-briefing-${orgName.toLowerCase().replace(/\s+/g, '-')}.md`
+    const slug = sector.id === 'unspecified' ? 'briefing' : sector.id.replace(/_/g, '-')
+    a.download = `mythos-ready-${slug}-${tier}.md`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -66,35 +91,40 @@ export default function BoardBriefing({ tier, setTier, answers }) {
   return (
     <div className="space-y-6">
       <section className="bg-white rounded-lg shadow-card p-6 no-print">
-        <h2 className="text-2xl font-bold text-mtm-navy mb-2">Board Briefing Generator</h2>
+        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+          <h2 className="text-2xl font-bold text-mtm-navy">Board Briefing Generator</h2>
+          <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-mtm-cream text-mtm-navy font-semibold whitespace-nowrap">
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full text-white text-[9px] font-bold" style={{ background: tierObj.color }}>{tierObj.badge}</span>
+            Sized for: {tierObj.label}
+          </span>
+        </div>
         <p className="text-gray-700 mb-4">
-          Templated talking points in MTM voice, customized to organization name, tier, and your self-assessment results. Edit, paste into a Word doc, and brief the board.
+          Templated talking points in plain English. Sector and tier shape the framing; nothing about your organization is sent anywhere — this all renders in your browser. Edit, paste into a Word doc, and brief the board.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Preset</label>
-            <select value={preset} onChange={(e) => handlePreset(e.target.value)} className="w-full p-2 border border-gray-300 rounded text-sm">
-              {PRESET_CLIENTS.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
+            <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Sector (optional)</label>
+            <select value={sectorId} onChange={(e) => setSectorId(e.target.value)} className="w-full p-2 border border-gray-300 rounded text-sm">
+              {SECTORS.map((s) => <option key={s.id} value={s.id}>{s.label}{s.context ? ` — ${s.context}` : ''}</option>)}
             </select>
-          </div>
-          <div>
-            <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Organization name</label>
-            <input value={orgName} onChange={(e) => setOrgName(e.target.value)} className="w-full p-2 border border-gray-300 rounded text-sm" />
+            <p className="text-xs text-gray-500 italic mt-1">Picking a sector adds context about the data and stakes specific to your kind of work. Skip it if it doesn't apply or you'd rather keep the briefing generic.</p>
           </div>
           <div>
             <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Tier</label>
             <select value={tier} onChange={(e) => setTier(e.target.value)} className="w-full p-2 border border-gray-300 rounded text-sm">
               {TIERS.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
             </select>
+            <p className="text-xs text-gray-500 italic mt-1">Sized to your organization's reality, not a CISO's expectations.</p>
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Briefer (optional)</label>
-            <input value={briefer} onChange={(e) => setBriefer(e.target.value)} placeholder="e.g., Joshua Peskay, MTM" className="w-full p-2 border border-gray-300 rounded text-sm" />
+            <label className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-1">Briefer name (optional)</label>
+            <input value={briefer} onChange={(e) => setBriefer(e.target.value)} placeholder="The person presenting to the board" className="w-full p-2 border border-gray-300 rounded text-sm" />
+            <p className="text-xs text-gray-500 italic mt-1">Name lives only in your browser. Used to fill the "Briefer" line on the memo.</p>
           </div>
         </div>
 
-        <div className="mt-5 flex gap-3">
+        <div className="mt-5 flex gap-3 flex-wrap">
           <button onClick={copyToClipboard} className="px-4 py-2 bg-mtm-primary text-white rounded font-medium hover:bg-mtm-navy transition text-sm">Copy to clipboard</button>
           <button onClick={downloadMarkdown} className="px-4 py-2 bg-white border-2 border-mtm-primary text-mtm-primary rounded font-medium hover:bg-mtm-cream transition text-sm">Download Markdown</button>
           <button onClick={() => window.print()} className="px-4 py-2 bg-white border-2 border-mtm-primary text-mtm-primary rounded font-medium hover:bg-mtm-cream transition text-sm">Print / Save PDF</button>
@@ -112,21 +142,27 @@ export default function BoardBriefing({ tier, setTier, answers }) {
   )
 }
 
-function generateBriefing({ orgName, tier, tierObj, score, topActions, briefer, hasAnswers }) {
+function generateBriefing({ sector, tier, tierObj, score, topActions, briefer, hasAnswers }) {
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  const sectorPhrase = sector.id === 'unspecified' ? 'our nonprofit' : `our ${sector.label.toLowerCase()} nonprofit`
   const profileLine = hasAnswers
-    ? `${orgName} self-assessed at "${score.profile.label}" (${score.score} of ${score.total} possible).`
+    ? `Our self-assessment lands at "${score.profile.label}" (${score.score} of ${score.total} possible).`
     : `Self-assessment not yet completed. Recommend running the 10-question diagnostic before this briefing is finalized.`
 
   const topActionsBlock = topActions.length
     ? topActions.map((a, i) => `${i + 1}. **${a.title}** — ${a.nonprofitTimeline[tier].note}`).join('\n')
     : '*Run the self-assessment to populate this section with action recommendations specific to your gaps.*'
 
-  return `# Board Briefing — Mythos-readiness for ${orgName}
+  const sectorStakes = sectorSpecificStakes(sector.id)
+  const sectorBlock = sectorStakes
+    ? `\n## What's distinctive about our risk\n\n${sectorStakes}\n\n---\n`
+    : ''
+
+  return `# Board Briefing — Mythos-readiness for ${sectorPhrase}
 
 **Date:** ${date}
 **Briefer:** ${briefer || '[Briefer name]'}
-**Audience:** Board of Directors, ${orgName}
+**Audience:** Board of Directors
 **Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, April 18, 2026 — https://labs.cloudsecurityalliance.org/mythos-ciso/
 
 ---
@@ -135,7 +171,7 @@ function generateBriefing({ orgName, tier, tierObj, score, topActions, briefer, 
 
 The cybersecurity threat environment changed materially in April 2026. Anthropic released Claude Mythos, an AI model that autonomously discovers thousands of zero-day vulnerabilities at $50 per run. A 50-CISO working group — including the former Director of CISA, the CISO of Google, and Bruce Schneier — published a joint briefing concluding that **time-to-exploit has collapsed from 2.3 years to under 24 hours.** Their named historical analog is Y2K.
 
-This briefing translates the working group's recommendations for ${orgName} (${tierObj.label}) and proposes a defensible, realistic response.
+This briefing translates the working group's recommendations for ${sectorPhrase} (${tierObj.label}) and proposes a defensible, realistic response.
 
 ---
 
@@ -149,17 +185,16 @@ The capability — AI finding novel vulnerabilities and generating exploits — 
 
 ---
 
-## What this means for ${orgName}
+## What this means for ${sectorPhrase}
 
-${orgName} is a **${tierObj.label}**. ${tierObj.realityNote}
+We are a **${tierObj.label}**. ${tierObj.realityNote}
 
 ${profileLine}
-
----
+${sectorBlock}
 
 ## What we are doing
 
-Five priority actions, sized for ${orgName}'s capacity:
+Five priority actions, sized for our capacity:
 
 ${topActionsBlock}
 
@@ -167,7 +202,7 @@ ${topActionsBlock}
 
 ## What we are *not* doing (and why)
 
-The original 11-action plan from the working group assumes a CISO with budget and a security team. ${orgName} ${tier === 'large' ? 'has the staffing to execute most of it on the aggressive timeline. Where we deviate, it is a sequencing decision, not a scope cut.' : tier === 'medium' ? 'cannot execute the 90-day plan as written. We have selected the 5 actions with the highest leverage for our tier and rescaled the timeline.' : 'operates below the Cyber Poverty Line, which the document explicitly acknowledges as out of scope. Our defense is layered: tightened MSP relationships, sector ISAC participation, the basics done well, and a documented "reasonable defensive effort" position.'}
+The original 11-action plan from the working group assumes a CISO with budget and a security team. ${tier === 'large' ? 'Our organization has the staffing to execute most of it on the aggressive timeline. Where we deviate, it is a sequencing decision, not a scope cut.' : tier === 'medium' ? 'Our organization cannot execute the 90-day plan as written. We have selected the 5 actions with the highest leverage for our tier and rescaled the timeline.' : 'Our organization operates below the Cyber Poverty Line, which the document explicitly acknowledges as out of scope. Our defense is layered: tightened MSP relationships, sector ISAC participation, the basics done well, and a documented "reasonable defensive effort" position.'}
 
 We are explicitly **not** standing up a Vulnerability Operations function (Action 11). That is unrealistic at our scale and would consume capacity we need for the basics. We will revisit if the threat landscape sustains the current acceleration past 12 months.
 
@@ -196,10 +231,8 @@ We considered and chose not to recommend the following, to be transparent with t
 - CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 18, 2026 (CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 - Anthropic, *Claude Mythos Preview* and *Project Glasswing,* April 7, 2026
 - Wendy Nather, *"The Cyber Poverty Line"* (referenced in the working group document)
-- This briefing was generated using the MTM Mythos-ready translator and customized for ${orgName}.
+- This briefing was generated using the Mythos-ready for Nonprofits translator at Meet the Moment.
 
 ---
-
-*Drafted with help from Vishali, an AI assistant, at the direction of ${briefer || 'the briefer'}. Any errors are the briefer's responsibility.*
 `
 }
