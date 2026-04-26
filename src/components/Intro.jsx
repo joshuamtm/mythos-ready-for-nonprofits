@@ -10,7 +10,7 @@ export default function Intro({ tier, setTab }) {
           <h2 className="text-3xl font-bold text-mtm-navy mt-1">Cybersecurity got faster in April 2026 — and the same tools nonprofits can use to defend themselves got better.</h2>
         </div>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          Until recently, when someone discovered a flaw in software you use — your email, your office network, your donor database — attackers needed roughly <strong>two years</strong> to figure out how to exploit it. That window gave software companies time to patch and gave your IT team time to apply those patches.
+          Until recently, when someone discovered a flaw in software you use — your email, your office network, your donor database — attackers sometimes needed <strong>as long as two years</strong> to figure out how to exploit it. That window gave software companies time to patch and gave your IT team time to apply those patches.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
           Today that window is <strong>hours</strong>. AI tools — the same kind that write code or summarize email — can now find software flaws and produce working attacks at consumer-pricing speed. The capability isn't theoretical; it's already in use. <strong>And here's the part the news cycle keeps missing:</strong> those same AI tools are also the most accessible defensive resource nonprofits have ever had. The opportunity and the threat are the same shape.
