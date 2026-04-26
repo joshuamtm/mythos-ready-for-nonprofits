@@ -5,7 +5,6 @@ export default function Header({ tab, setTab }) {
     { id: 'actions', label: 'Priority Actions' },
     { id: 'assess', label: 'Self-Assessment' },
     { id: 'briefing', label: 'Board Briefing' },
-    { id: 'frameworks', label: 'Frameworks' },
   ]
   return (
     <header className="bg-mtm-navy text-white no-print">

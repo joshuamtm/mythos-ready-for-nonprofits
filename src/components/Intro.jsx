@@ -83,12 +83,6 @@ export default function Intro({ tier, setTab }) {
           onClick={() => setTab('briefing')}
         />
         <NavCard
-          title="Frameworks"
-          subtitle="Crosswalk reference"
-          description="OWASP LLM 2025, OWASP Agentic 2026, MITRE ATLAS, NIST CSF 2.0 — the four frameworks the register maps to."
-          onClick={() => setTab('frameworks')}
-        />
-        <NavCard
           title="Source"
           subtitle="The original briefing"
           description="29 pages, CC BY-NC 4.0, hosted by Cloud Security Alliance. Always verify against source."
