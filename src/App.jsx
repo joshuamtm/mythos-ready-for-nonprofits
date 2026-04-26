@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import TierPicker from './components/TierPicker.jsx'
@@ -11,7 +11,14 @@ import BoardBriefing from './components/BoardBriefing.jsx'
 export default function App() {
   const [tab, setTab] = useState('intro')
   const [tier, setTier] = useState('medium')
-  const [answers, setAnswers] = useState({})
+  const [answers, setAnswers] = useState(() => {
+    try {
+      const saved = localStorage.getItem('mythos-ready:self-assessment')
+      return saved ? JSON.parse(saved) : {}
+    } catch {
+      return {}
+    }
+  })
 
   return (
     <div className="min-h-screen flex flex-col">

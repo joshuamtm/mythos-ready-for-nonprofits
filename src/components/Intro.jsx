@@ -7,13 +7,13 @@ export default function Intro({ tier, setTab }) {
       <section className="bg-white rounded-lg shadow-card p-8">
         <div className="border-l-4 border-mtm-primary pl-6 py-2 mb-6">
           <p className="text-sm uppercase tracking-widest text-mtm-primary font-semibold">In plain English</p>
-          <h2 className="text-3xl font-bold text-mtm-navy mt-1">Cybersecurity got faster in April 2026 — and most nonprofits aren't ready.</h2>
+          <h2 className="text-3xl font-bold text-mtm-navy mt-1">Cybersecurity got faster in April 2026 — and the same tools nonprofits can use to defend themselves got better.</h2>
         </div>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
           Until recently, when someone discovered a flaw in software you use — your email, your office network, your donor database — attackers needed roughly <strong>two years</strong> to figure out how to exploit it. That window gave software companies time to patch and gave your IT team time to apply those patches.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          Today that window is <strong>hours</strong>. AI tools — the same kind that write code or summarize email — can now find software flaws and produce working attacks at consumer-pricing speed. The capability isn't theoretical; it's already in use.
+          Today that window is <strong>hours</strong>. AI tools — the same kind that write code or summarize email — can now find software flaws and produce working attacks at consumer-pricing speed. The capability isn't theoretical; it's already in use. <strong>And here's the part the news cycle keeps missing:</strong> those same AI tools are also the most accessible defensive resource nonprofits have ever had. The opportunity and the threat are the same shape.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
           A working group of 50+ Chief Information Security Officers — the people who run security at Google, the former U.S. national cyber director, Bruce Schneier, the former CISO of CISA — wrote a 29-page playbook in April 2026 explaining what every organization should do about it. It's called <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">"The AI Vulnerability Storm: Building a Mythos-ready Security Program"</a> and it's published openly by the Cloud Security Alliance. <strong>They wrote it for organizations that have a security team and a budget.</strong>
@@ -44,8 +44,24 @@ export default function Intro({ tier, setTab }) {
         <p className="text-base text-gray-800 leading-relaxed mb-4">
           The document explicitly invokes the <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2023/m01/breaking-the-cycle-of-security-poverty.html" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">Cyber Poverty Line</a> — a term coined by Wendy Nather (now Head of Advisory CISOs at Cisco) for the line below which an organization cannot effectively defend itself, no matter how good its intentions are. The working group admits its prescriptions don't reach below that line. That's where most of MTM's clients live — small and mid-size nonprofits with limited IT capacity, MSP-managed infrastructure, and no dedicated security staff.
         </p>
+        <p className="text-base text-gray-800 leading-relaxed mb-4">
+          And the people whose data sits on those nonprofit systems often have the most to lose: clients of food assistance and housing services, undocumented community members, survivors of violence, donors who chose anonymity, patients whose health data is protected by HIPAA. The "reasonable defensive effort" standard hits hardest when the data is most sensitive. That stake is mostly absent from the original briefing; it's central here.
+        </p>
         <p className="text-base text-gray-800 leading-relaxed">
           This site translates the document's 13-row risk register, 11 priority actions, and 10 self-assessment questions into <strong>tier-aware, realistic guidance</strong> for organizations operating at or below the Cyber Poverty Line — without diluting the technical substance.
+        </p>
+      </section>
+
+      <section className="bg-white rounded-lg shadow-card p-8 border-l-4 border-mtm-accent">
+        <h3 className="text-2xl font-bold text-mtm-navy mb-3">The empowerment side of this</h3>
+        <p className="text-base text-gray-700 leading-relaxed mb-3">
+          The same working group that documented the threat also wrote a section called <em>"Are We Outmoded?"</em> The answer they give: not even close. Their words, lightly edited:
+        </p>
+        <blockquote className="border-l-4 border-mtm-accent bg-mtm-cream p-5 my-4 italic text-gray-800 leading-relaxed">
+          "Agents — coding agents in particular, though they're useful well beyond code, in GRC and incident response and far beyond their original use case — represent an opportunity for personal growth and a feeling of empowerment. Everyone on your team, including you, can become hands-on. <strong>Using a coding agent is now easier than using Excel.</strong> All you need to know is English."
+        </blockquote>
+        <p className="text-base text-gray-700 leading-relaxed">
+          That's not minimization of the threat. The risk register is real, the timeline is real, the asymmetry is real. But the same tools that accelerated the offense are accessible to your IT lead, your operations director, your communications person — without a developer, without a SOC, without a CISO. The work this tool helps you do is half-defensive and half-empowering. Both halves matter.
         </p>
       </section>
 

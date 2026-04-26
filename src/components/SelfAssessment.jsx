@@ -1,8 +1,15 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { QUESTIONS, ANSWER_OPTIONS, scoreToProfile } from '../data/questions.js'
 import { ACTIONS } from '../data/actions.js'
 
+const STORAGE_KEY = 'mythos-ready:self-assessment'
+
 export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
+  useEffect(() => {
+    if (Object.keys(answers).length > 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(answers))
+    }
+  }, [answers])
   const score = useMemo(() => {
     let s = 0
     let total = 0
@@ -26,7 +33,10 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
   }, [answers])
 
   const setAnswer = (qid, value) => setAnswers({ ...answers, [qid]: value })
-  const reset = () => setAnswers({})
+  const reset = () => {
+    setAnswers({})
+    localStorage.removeItem(STORAGE_KEY)
+  }
   const completed = Object.keys(answers).length
 
   return (
@@ -37,7 +47,14 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
           The 10 questions the document poses to CISOs, adapted for any nonprofit IT or executive leader. Honest answers are more useful than aspirational ones. Some questions (notably #5 on code release gates) won't apply if your organization doesn't ship custom software — mark those <em>N/A</em>.
         </p>
         <p className="text-sm text-gray-600 italic mb-4">
-          The questions are the same for every tier — they're universal diagnostics. <strong>Scoring is calibrated to your tier</strong>: a small nonprofit and a large nonprofit answering identically will get different "Mythos-aware" thresholds, because the realistic ceiling differs. Pick your tier above before reviewing your profile.
+          The questions are the same for every tier — they're universal diagnostics. <strong>Scoring is calibrated to your tier</strong>: a small nonprofit and a large nonprofit answering identically will get different "Mythos-aware" thresholds, because the realistic ceiling differs. Pick your tier above before reviewing your profile. Your answers save automatically in your browser.
+        </p>
+      </section>
+
+      <section className="bg-mtm-cream rounded-lg p-5 border-l-4 border-mtm-accent">
+        <h3 className="text-base font-bold text-mtm-navy mb-1">Start here if you're brand new to this</h3>
+        <p className="text-sm text-gray-800 leading-relaxed">
+          If most of your honest answers are <strong>"no,"</strong> that's fine. It's the most common starting point for small and mid-size nonprofits. "No" doesn't mean you're failing — it means you have an opportunity. The recommended actions section below will surface the specific places to start, sized for your tier. You don't need to do all of them. Pick one this quarter.
         </p>
         <div className="flex items-center gap-4 flex-wrap">
           <div className="text-sm text-gray-600">

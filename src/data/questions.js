@@ -4,8 +4,8 @@
 export const QUESTIONS = [
   {
     id: 1,
-    question: 'Do you have a documented stance on AI tool use in your organization today?',
-    context: 'Allowed, tolerated, restricted, or unknown. Even a one-page acceptable-use policy counts.',
+    question: 'Is there clarity in your organization about how staff should use AI tools today?',
+    context: 'Written or unwritten. Allowed, tolerated, restricted, or unclear. There is no wrong answer — "no" is the most common starting point.',
     relatedRisks: [11, 13],
     relatedActions: [4],
   },

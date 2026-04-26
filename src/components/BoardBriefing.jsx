@@ -177,8 +177,17 @@ We are explicitly **not** standing up a Vulnerability Operations function (Actio
 
 1. **Awareness.** Acknowledge that the threat landscape changed in a way that affects our risk model and may require capacity decisions in the next 6-12 months.
 2. **A documented "reasonable defensive effort" position** for liability and insurance purposes, reviewed annually.
-3. **Approval to revisit the risk register** in our next regular board meeting with updated heat map.
+3. **Approval to revisit the risk register** in our next regular board meeting with updated heat map, and to make this a quarterly cadence rather than annual.
 4. ${tier !== 'small' ? 'Capacity authorization for one additional priority — to be decided based on gap analysis (likely AI agent adoption, hardening, or external attack-surface monitoring).' : 'Authorization to deepen our MSP relationship and confirm continuity of monitoring and patching SLAs.'}
+5. **Insurance carrier conversation.** Authorization to update our cyber liability carrier on AI-accelerated threat landscape and confirm coverage adequacy. Most carriers are quietly tightening AI-related exclusions; we want clarity now, not after a claim.
+
+## What we are explicitly NOT asking for
+
+We considered and chose not to recommend the following, to be transparent with the board about scope:
+
+- **A new dedicated security hire.** Our tier and budget don't support it; we're choosing to leverage MSP and vCISO relationships instead.
+- **A full Vulnerability Operations function** (the document's 12-month aspiration). Unrealistic at our scale and would consume capacity we need for the basics.
+- **Wholesale AI-tool ban.** AI tools are already in use across the org. A ban is unenforceable and would push use into the shadows where governance can't reach. We're choosing managed adoption with clear guardrails.
 
 ---
 
