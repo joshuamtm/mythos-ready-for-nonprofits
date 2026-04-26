@@ -5,7 +5,7 @@ export default function Footer() {
         <img src="/assets/mtm-logo.png" alt="Meet the Moment" className="h-10 mx-auto mb-3" />
         <p className="text-sm text-gray-600 mb-2">An MTM working tool · Meet the Moment</p>
         <p className="text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          Translates the CSA / SANS / [un]prompted / OWASP <em>"AI Vulnerability Storm: Building a Mythos-ready Security Program"</em> briefing (April 18, 2026 v0.95) for nonprofits operating below the Cyber Poverty Line.
+          Translates the CSA / SANS / [un]prompted / OWASP <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline"><em>"AI Vulnerability Storm: Building a Mythos-ready Security Program"</em></a> briefing (April 18, 2026 v0.95) for nonprofits operating below the Cyber Poverty Line.
           Source document is CC BY-NC 4.0 licensed. Translations and tier-aware guidance are MTM's interpretation.
           This is an internal working tool; not legal, technology, or business advice.
         </p>

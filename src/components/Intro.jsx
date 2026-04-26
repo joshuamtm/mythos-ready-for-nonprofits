@@ -5,17 +5,36 @@ export default function Intro({ tier, setTab }) {
   return (
     <div className="space-y-8">
       <section className="bg-white rounded-lg shadow-card p-8">
-        <div className="border-l-4 border-mtm-accent pl-6 py-2 mb-6">
-          <p className="text-sm uppercase tracking-widest text-mtm-accent font-semibold">The shift</p>
-          <h2 className="text-3xl font-bold text-mtm-navy mt-1">From 2.3 years to under 24 hours.</h2>
+        <div className="border-l-4 border-mtm-primary pl-6 py-2 mb-6">
+          <p className="text-sm uppercase tracking-widest text-mtm-primary font-semibold">In plain English</p>
+          <h2 className="text-3xl font-bold text-mtm-navy mt-1">Cybersecurity got faster in April 2026 — and most nonprofits aren't ready.</h2>
         </div>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          The CSA / SANS / [un]prompted / OWASP working group — 50+ CISOs including Jen Easterly, Bruce Schneier, Heather Adkins, Phil Venables, Bob Lord, Rob Joyce — published <em>"The AI Vulnerability Storm: Building a Mythos-ready Security Program"</em> on April 18, 2026.
+          Until recently, when someone discovered a flaw in software you use — your email, your office network, your donor database — attackers needed roughly <strong>two years</strong> to figure out how to exploit it. That window gave software companies time to patch and gave your IT team time to apply those patches.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          Their core finding: <strong>time-to-exploit collapsed</strong> from 2.3 years (2018) to under 24 hours (2026). Anthropic's Claude Mythos preview was the inflection signal — autonomously discovering thousands of zero-days in every major OS and browser, including a 27-year-old OpenBSD bug, at $50/run. The capability will proliferate. The defense gap is not technological; it is organizational.
+          Today that window is <strong>hours</strong>. AI tools — the same kind that write code or summarize email — can now find software flaws and produce working attacks at consumer-pricing speed. The capability isn't theoretical; it's already in use.
+        </p>
+        <p className="text-lg text-gray-700 leading-relaxed mb-4">
+          A working group of 50+ Chief Information Security Officers — the people who run security at Google, the former U.S. national cyber director, Bruce Schneier, the former CISO of CISA — wrote a 29-page playbook in April 2026 explaining what every organization should do about it. It's called <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">"The AI Vulnerability Storm: Building a Mythos-ready Security Program"</a> and it's published openly by the Cloud Security Alliance. <strong>They wrote it for organizations that have a security team and a budget.</strong>
         </p>
         <p className="text-lg text-gray-700 leading-relaxed">
+          Most nonprofits don't have either. This site translates that playbook for nonprofits at three sizes — small, medium, and large — without diluting the substance. Pick your tier on any page, walk through the 13 risks and 11 actions in language that fits your reality, and generate a board briefing in plain English. <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline">Read the original briefing here.</a>
+        </p>
+      </section>
+
+      <section className="bg-white rounded-lg shadow-card p-8">
+        <div className="border-l-4 border-mtm-accent pl-6 py-2 mb-6">
+          <p className="text-sm uppercase tracking-widest text-mtm-accent font-semibold">The technical shift</p>
+          <h2 className="text-2xl font-bold text-mtm-navy mt-1">From 2.3 years to under 24 hours.</h2>
+        </div>
+        <p className="text-base text-gray-700 leading-relaxed mb-3">
+          The CSA / SANS / [un]prompted / OWASP working group — including Jen Easterly, Bruce Schneier, Heather Adkins, Phil Venables, Bob Lord, and Rob Joyce — published <em>"The AI Vulnerability Storm: Building a Mythos-ready Security Program"</em> on April 18, 2026.
+        </p>
+        <p className="text-base text-gray-700 leading-relaxed mb-3">
+          Their core finding: <strong>time-to-exploit collapsed</strong> from 2.3 years (2018) to under 24 hours (2026). Anthropic's Claude Mythos preview was the inflection signal — autonomously discovering thousands of zero-days in every major OS and browser, including a 27-year-old OpenBSD bug, at $50/run. The capability will proliferate. The defense gap is not technological; it is organizational.
+        </p>
+        <p className="text-base text-gray-700 leading-relaxed">
           They named the historical analog: <strong>Y2K</strong>. A systemic threat with a hard deadline that the industry met through coordinated, disciplined effort.
         </p>
       </section>
@@ -23,7 +42,7 @@ export default function Intro({ tier, setTab }) {
       <section className="bg-mtm-cream rounded-lg p-8 border-l-4 border-mtm-primary">
         <h3 className="text-2xl font-bold text-mtm-navy mb-3">The gap this tool exists to fill</h3>
         <p className="text-base text-gray-800 leading-relaxed mb-4">
-          The document explicitly invokes <strong>Wendy Nather's Cyber Poverty Line</strong> and admits its prescriptions don't reach below it. That's where most of MTM's clients live — small and mid-size nonprofits with limited IT capacity, MSP-managed infrastructure, and no dedicated security staff.
+          The document explicitly invokes the <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2023/m01/breaking-the-cycle-of-security-poverty.html" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">Cyber Poverty Line</a> — a term coined by Wendy Nather (now Head of Advisory CISOs at Cisco) for the line below which an organization cannot effectively defend itself, no matter how good its intentions are. The working group admits its prescriptions don't reach below that line. That's where most of MTM's clients live — small and mid-size nonprofits with limited IT capacity, MSP-managed infrastructure, and no dedicated security staff.
         </p>
         <p className="text-base text-gray-800 leading-relaxed">
           This site translates the document's 13-row risk register, 11 priority actions, and 10 self-assessment questions into <strong>tier-aware, realistic guidance</strong> for organizations operating at or below the Cyber Poverty Line — without diluting the technical substance.
@@ -73,7 +92,7 @@ export default function Intro({ tier, setTab }) {
           title="Source"
           subtitle="The original briefing"
           description="29 pages, CC BY-NC 4.0, hosted by Cloud Security Alliance. Always verify against source."
-          href="https://cloudsecurityalliance.org/"
+          href="https://labs.cloudsecurityalliance.org/mythos-ciso/"
         />
       </section>
     </div>

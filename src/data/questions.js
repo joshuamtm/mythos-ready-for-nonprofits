@@ -81,27 +81,39 @@ export const ANSWER_OPTIONS = [
   { value: 'na', label: 'N/A', score: null, color: '#9ca3af' },
 ]
 
-export const scoreToProfile = (score, total) => {
+// Tier-aware scoring thresholds. Small orgs get more credit for the same answers
+// because the realistic ceiling is lower — we calibrate against what's actually
+// achievable below the Cyber Poverty Line, not against a CISO's expectations.
+const THRESHOLDS = {
+  small:  { aware: 65, progress: 50, foundational: 30 },
+  medium: { aware: 75, progress: 55, foundational: 35 },
+  large:  { aware: 80, progress: 60, foundational: 40 },
+}
+
+export const scoreToProfile = (score, total, tier = 'medium') => {
   if (total === 0) return { label: 'No data', color: '#9ca3af', summary: 'Answer at least one question to see your profile.' }
   const pct = (score / total) * 100
-  if (pct >= 80) return {
+  const t = THRESHOLDS[tier] || THRESHOLDS.medium
+  const tierLabel = tier === 'small' ? 'small' : tier === 'medium' ? 'mid-size' : 'large'
+
+  if (pct >= t.aware) return {
     label: 'Mythos-aware',
     color: '#10b981',
-    summary: 'You\'re ahead of most organizations of your size. Focus on continuous improvement and helping peers below the Cyber Poverty Line.',
+    summary: `You're ahead of most ${tierLabel} nonprofits. Focus on continuous improvement and helping peers below the Cyber Poverty Line — your story is worth sharing.`,
   }
-  if (pct >= 60) return {
+  if (pct >= t.progress) return {
     label: 'Mythos-aware in progress',
     color: '#1ab1d2',
-    summary: 'Strong foundation. Pick the lowest-scoring answers above and tackle one per quarter. The board briefing generator will help you tell this story.',
+    summary: `Strong foundation for a ${tierLabel} nonprofit. Pick the lowest-scoring answers and tackle one per quarter. The board briefing generator will help you tell this story.`,
   }
-  if (pct >= 40) return {
+  if (pct >= t.foundational) return {
     label: 'Foundational',
     color: '#f59e0b',
-    summary: 'You have meaningful security investments but the AI-accelerated landscape is outpacing them. Prioritize the actions tied to your "no" answers.',
+    summary: `You have meaningful security investments, but the AI-accelerated landscape is outpacing them. Prioritize the actions tied to your "no" answers — the next page rescales them for a ${tierLabel} nonprofit's reality.`,
   }
   return {
     label: 'Below readiness',
     color: '#ef4444',
-    summary: 'You\'re not ready for the AI-accelerated threat environment. This is common and recoverable. Start with Actions 1, 2, and 8 (the basics), and bring this profile to your next board meeting using the briefing generator.',
+    summary: `You're not ready for the AI-accelerated threat environment, which is common for ${tierLabel} nonprofits and recoverable. Start with the basics (Actions 1, 2, 8) and bring this profile to your next board meeting using the briefing generator.`,
   }
 }

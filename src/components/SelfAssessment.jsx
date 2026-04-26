@@ -15,8 +15,8 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
         total += 2
       }
     })
-    return { score: s, total, profile: scoreToProfile(s, total) }
-  }, [answers])
+    return { score: s, total, profile: scoreToProfile(s, total, tier) }
+  }, [answers, tier])
 
   const recommendedActions = useMemo(() => {
     const noOrPartialQs = QUESTIONS.filter((q) => answers[q.id] === 'no' || answers[q.id] === 'partial')
@@ -33,8 +33,11 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
     <div className="space-y-6">
       <section className="bg-white rounded-lg shadow-card p-6">
         <h2 className="text-2xl font-bold text-mtm-navy mb-2">Self-Assessment</h2>
-        <p className="text-gray-700 mb-4">
-          The 10 questions the document poses to CISOs, adapted for any nonprofit IT or executive leader. Honest answers are more useful than aspirational ones.
+        <p className="text-gray-700 mb-2">
+          The 10 questions the document poses to CISOs, adapted for any nonprofit IT or executive leader. Honest answers are more useful than aspirational ones. Some questions (notably #5 on code release gates) won't apply if your organization doesn't ship custom software — mark those <em>N/A</em>.
+        </p>
+        <p className="text-sm text-gray-600 italic mb-4">
+          The questions are the same for every tier — they're universal diagnostics. <strong>Scoring is calibrated to your tier</strong>: a small nonprofit and a large nonprofit answering identically will get different "Mythos-aware" thresholds, because the realistic ceiling differs. Pick your tier above before reviewing your profile.
         </p>
         <div className="flex items-center gap-4 flex-wrap">
           <div className="text-sm text-gray-600">

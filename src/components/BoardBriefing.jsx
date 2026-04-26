@@ -39,8 +39,8 @@ export default function BoardBriefing({ tier, setTier, answers }) {
         total += 2
       }
     })
-    return { score: s, total, profile: scoreToProfile(s, total) }
-  }, [answers])
+    return { score: s, total, profile: scoreToProfile(s, total, tier) }
+  }, [answers, tier])
 
   const noOrPartialQs = QUESTIONS.filter((q) => answers[q.id] === 'no' || answers[q.id] === 'partial')
   const recommendedActionIds = new Set()
@@ -127,7 +127,7 @@ function generateBriefing({ orgName, tier, tierObj, score, topActions, briefer, 
 **Date:** ${date}
 **Briefer:** ${briefer || '[Briefer name]'}
 **Audience:** Board of Directors, ${orgName}
-**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" (CSA / SANS / [un]prompted / OWASP, April 18, 2026)
+**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, April 18, 2026 — https://labs.cloudsecurityalliance.org/mythos-ciso/
 
 ---
 
@@ -184,7 +184,7 @@ We are explicitly **not** standing up a Vulnerability Operations function (Actio
 
 ## Source materials
 
-- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 18, 2026 (CC BY-NC 4.0)
+- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 18, 2026 (CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 - Anthropic, *Claude Mythos Preview* and *Project Glasswing,* April 7, 2026
 - Wendy Nather, *"The Cyber Poverty Line"* (referenced in the working group document)
 - This briefing was generated using the MTM Mythos-ready translator and customized for ${orgName}.

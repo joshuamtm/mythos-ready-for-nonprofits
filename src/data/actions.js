@@ -13,7 +13,7 @@ export const ACTIONS = [
     tools: 'Commercial: Claude Code Security (Anthropic), Codex Security (OpenAI). Open source: OpenAnt (Knostic), raptor (Claude Code framework), exploitation-validator agentic skill, agentic skills from Trail of Bits.',
     nonprofitTimeline: {
       small: { start: 'When you next ship code', horizon: 'Ongoing', note: 'Skip if you don\'t ship code. Otherwise, ask the developer to use Claude Code or Copilot review.' },
-      medium: { start: 'Next 30 days', horizon: '90 days', note: 'Free tier of Claude for Nonprofits or GitHub Copilot covers most volume.' },
+      medium: { start: 'Next 30 days', horizon: '90 days', note: 'Claude for Nonprofits (~$8/seat/month via TechSoup) or GitHub Copilot ($10-19/seat/month) covers most volume.' },
       large: { start: 'This week', horizon: 'Ongoing', note: 'Same timeline as for-profits. Mandatory in CI/CD.' },
     },
   },

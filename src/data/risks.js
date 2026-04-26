@@ -29,7 +29,7 @@ export const RISKS = [
     mapsToActions: [1, 2],
     nonprofitTranslation: {
       small: 'Start small: ChatGPT Plus or Claude Pro for your IT lead and Executive Director. Use it for log review, policy drafting, vendor questionnaire response. Cost: $20-30/month. Impact: real.',
-      medium: 'Formalize AI agent use across your IT and security functions. Free tier of Claude for Nonprofits is available. Build a written acceptable-use policy first; deployment second.',
+      medium: 'Formalize AI agent use across your IT and security functions. Claude for Nonprofits (~$8/seat/month via TechSoup/Goodstack) or ChatGPT Business (~20% nonprofit discount) is the most common starting point. Build a written acceptable-use policy first; deployment second.',
       large: 'AI coding agents (Claude Code, GitHub Copilot) for any developer or sysadmin work. Mandatory in security workflows: log analysis, alert triage, policy drafting. Track adoption metrics.',
     },
   },
@@ -104,7 +104,7 @@ export const RISKS = [
     mapsToActions: [1],
     nonprofitTranslation: {
       small: 'If you don\'t write code, this doesn\'t apply. Skip. (If a contractor or volunteer writes code for you, ask whether they use AI-assisted code review — most legitimate ones now do.)',
-      medium: 'Any internally-developed app or script: require AI-assisted code review before deployment. Free tier of Claude Code or GitHub Copilot is enough for most nonprofit dev volume.',
+      medium: 'Any internally-developed app or script: require AI-assisted code review before deployment. Claude Code (Pro tier) or GitHub Copilot is enough for most nonprofit dev volume; cost is in the $10-20/dev/month range.',
       large: 'Mandatory LLM-driven security review in CI/CD before merge to main. Claude Code Security, OpenAI Codex Security, or open-source OpenAnt. Cooling-off / security-gate between code change and production.',
     },
   },
@@ -149,7 +149,7 @@ export const RISKS = [
     mapsToActions: [9, 10],
     nonprofitTranslation: {
       small: 'Subscribe to one threat-intel feed: CISA Known Exploited Vulnerabilities (free) or your sector ISAC. Read it weekly. That\'s your v1.',
-      medium: 'CISA KEV + MS-ISAC (free for nonprofits) + sector ISAC. Behavioral indicators matter more than IOCs now — invest in EDR if you haven\'t.',
+      medium: 'CISA KEV + your sector ISAC (NH-ISAC for healthcare, REN-ISAC for higher ed, etc. — pricing varies). Behavioral indicators matter more than IOCs now — invest in EDR if you haven\'t.',
       large: 'Multiple threat-intel sources, including commercial (Recorded Future, Mandiant tier). Behavioral detection (UEBA) more important than signature-based. Hunt for anomalies, not just known indicators.',
     },
   },
