@@ -55,7 +55,7 @@ export default function Footer() {
 
         <div className="text-center">
           <p className="text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Translates the CSA / SANS / [un]prompted / OWASP <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline"><em>"AI Vulnerability Storm: Building a Mythos-ready Security Program"</em></a> briefing (April 18, 2026 v0.95) for nonprofits operating below the Cyber Poverty Line.
+            Translates the <a href="https://cloudsecurityalliance.org/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline">CSA</a> / <a href="https://www.sans.org/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline">SANS</a> / <a href="https://unpromptedcon.org/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline">[un]prompted</a> / <a href="https://genai.owasp.org/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline">OWASP</a> <a href="https://labs.cloudsecurityalliance.org/mythos-ciso/" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline"><em>"AI Vulnerability Storm: Building a Mythos-ready Security Program"</em></a> briefing (April 18, 2026 v0.95) for nonprofits operating below the Cyber Poverty Line.
             Source document is CC BY-NC 4.0 licensed. Translations and tier-aware guidance are MTM's interpretation.
             This is an internal working tool; not legal, technology, or business advice.
           </p>
