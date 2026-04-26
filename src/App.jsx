@@ -23,10 +23,12 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header tab={tab} setTab={setTab} />
-      <main className="flex-grow max-w-container mx-auto px-6 py-8 w-full">
-        {tab !== 'intro' && tab !== 'briefing' && (
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm no-print">
+        <div className="max-w-container mx-auto px-6 py-3">
           <TierPicker tier={tier} setTier={setTier} compact />
-        )}
+        </div>
+      </div>
+      <main className="flex-grow max-w-container mx-auto px-6 py-8 w-full">
         {tab === 'intro' && <Intro tier={tier} setTab={setTab} />}
         {tab === 'risks' && <RiskRegister tier={tier} />}
         {tab === 'actions' && <PriorityActions tier={tier} />}
