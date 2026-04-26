@@ -42,13 +42,18 @@ export default function Intro({ tier, setTab }) {
       <section className="bg-mtm-cream rounded-lg p-8 border-l-4 border-mtm-primary">
         <h3 className="text-2xl font-bold text-mtm-navy mb-3">The gap this tool exists to fill</h3>
         <p className="text-base text-gray-800 leading-relaxed mb-4">
-          The document explicitly invokes the <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2023/m01/breaking-the-cycle-of-security-poverty.html" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">Cyber Poverty Line</a> — a term coined by Wendy Nather (now Head of Advisory CISOs at Cisco) for the line below which an organization cannot effectively defend itself, no matter how good its intentions are. The working group admits its prescriptions don't reach below that line. That's where most of MTM's clients live — small and mid-size nonprofits with limited IT capacity, MSP-managed infrastructure, and no dedicated security staff.
+          The document explicitly invokes the <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2023/m01/breaking-the-cycle-of-security-poverty.html" target="_blank" rel="noopener noreferrer" className="text-mtm-primary underline font-semibold">Cyber Poverty Line</a> — a term coined by Wendy Nather (now Head of Advisory CISOs at Cisco) for the line below which an organization cannot effectively defend itself, no matter how good its intentions are. The working group admits its prescriptions don't reach below that line.
         </p>
         <p className="text-base text-gray-800 leading-relaxed mb-4">
-          And the people whose data sits on those nonprofit systems often have the most to lose: clients of food assistance and housing services, undocumented community members, survivors of violence, donors who chose anonymity, patients whose health data is protected by HIPAA. The "reasonable defensive effort" standard hits hardest when the data is most sensitive. That stake is mostly absent from the original briefing; it's central here.
+          {tier === 'small' && (<>You're a <strong>small nonprofit</strong>, which means you're below the Cyber Poverty Line — the document's prescriptions don't reach you, and that's not your failure. Your defense is collective: tightened MSP relationships, sector ISACs, the basics done well, and trusted advisors who translate this for you. That's most of what this site does.</>)}
+          {tier === 'medium' && (<>You're a <strong>mid-size nonprofit</strong>, which means you're at or just above the Cyber Poverty Line. Some of the document's actions are within reach if you prioritize aggressively; many require leverage through your MSP or vCISO partner. Pick the highest-impact handful and skip the rest.</>)}
+          {tier === 'large' && (<>You're a <strong>large nonprofit</strong>, which means you're above the Cyber Poverty Line. The document's 90-day plan is feasible with executive sponsorship; you have the staffing and tooling budget to execute most actions on the aggressive timeline. The translations on this site help you communicate the work to a board that's not living in CISO vocabulary.</>)}
+        </p>
+        <p className="text-base text-gray-800 leading-relaxed mb-4">
+          And the people whose data sits on nonprofit systems often have the most to lose: clients of food assistance and housing services, undocumented community members, survivors of violence, donors who chose anonymity, patients whose health data is protected by HIPAA. The "reasonable defensive effort" standard hits hardest when the data is most sensitive. That stake is mostly absent from the original briefing; it's central here.
         </p>
         <p className="text-base text-gray-800 leading-relaxed">
-          This site translates the document's 13-row risk register, 11 priority actions, and 10 self-assessment questions into <strong>tier-aware, realistic guidance</strong> for organizations operating at or below the Cyber Poverty Line — without diluting the technical substance.
+          This site translates the document's 13-row risk register, 11 priority actions, and 10 self-assessment questions into <strong>tier-aware, realistic guidance</strong> — without diluting the technical substance.
         </p>
       </section>
 
@@ -61,7 +66,11 @@ export default function Intro({ tier, setTab }) {
           "Agents — coding agents in particular, though they're useful well beyond code, in GRC and incident response and far beyond their original use case — represent an opportunity for personal growth and a feeling of empowerment. Everyone on your team, including you, can become hands-on. <strong>Using a coding agent is now easier than using Excel.</strong> All you need to know is English."
         </blockquote>
         <p className="text-base text-gray-700 leading-relaxed">
-          That's not minimization of the threat. The risk register is real, the timeline is real, the asymmetry is real. But the same tools that accelerated the offense are accessible to your IT lead, your operations director, your communications person — without a developer, without a SOC, without a CISO. The work this tool helps you do is half-defensive and half-empowering. Both halves matter.
+          That's not minimization of the threat. The risk register is real, the timeline is real, the asymmetry is real. But the same tools that accelerated the offense are accessible to{' '}
+          {tier === 'small' && (<>your ED, your operations lead, your one-person IT shop or MSP contact — without a developer, without a SOC, without a CISO. A $20/month subscription gets your team the same tools that Fortune 500 security teams are deploying. The leverage gap closes from your side, not just from theirs.</>)}
+          {tier === 'medium' && (<>your IT director, your operations team, your program staff — without hiring, without expensive enterprise contracts, without a full-time security function. The same coding agents Anthropic is using to build defensive tools are usable by your two-person IT shop today.</>)}
+          {tier === 'large' && (<>every member of your IT and security team, your program managers, your finance and HR staff — augmenting their existing expertise rather than replacing it. The "AI builder" role the document describes is achievable across your organization, not just in a centralized AI office.</>)}
+          {' '}The work this tool helps you do is half-defensive and half-empowering. Both halves matter.
         </p>
       </section>
 

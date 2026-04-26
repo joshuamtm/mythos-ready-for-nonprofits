@@ -5,7 +5,8 @@ import { TIERS } from '../data/tiers.js'
 export default function RiskRegister({ tier }) {
   const [filter, setFilter] = useState('all')
   const [expanded, setExpanded] = useState(null)
-  const tierLabel = TIERS.find((t) => t.id === tier)?.label
+  const tierObj = TIERS.find((t) => t.id === tier)
+  const tierLabel = tierObj?.label
 
   const filtered = useMemo(() => {
     const sorted = [...RISKS].sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity])
@@ -23,7 +24,13 @@ export default function RiskRegister({ tier }) {
   return (
     <div className="space-y-6">
       <section className="bg-white rounded-lg shadow-card p-6">
-        <h2 className="text-2xl font-bold text-mtm-navy mb-2">Risk Register</h2>
+        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+          <h2 className="text-2xl font-bold text-mtm-navy">Risk Register</h2>
+          <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-mtm-cream text-mtm-navy font-semibold whitespace-nowrap">
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full text-white text-[9px] font-bold" style={{ background: TIERS.find((t) => t.id === tier)?.color }}>{TIERS.find((t) => t.id === tier)?.badge}</span>
+            Showing translations for: {tierLabel}
+          </span>
+        </div>
         <p className="text-gray-700 mb-4">
           The 13 risks identified by the working group. Severity reflects time-to-exposure: Critical = immediate, High = within 45 days, Medium = degrades higher-priority controls.
           Click any row to see what it means for your tier.

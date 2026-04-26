@@ -12,9 +12,15 @@ export default function PriorityActions({ tier }) {
   return (
     <div className="space-y-6">
       <section className="bg-white rounded-lg shadow-card p-6">
-        <h2 className="text-2xl font-bold text-mtm-navy mb-2">Priority Actions</h2>
+        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+          <h2 className="text-2xl font-bold text-mtm-navy">Priority Actions</h2>
+          <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-mtm-cream text-mtm-navy font-semibold whitespace-nowrap">
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full text-white text-[9px] font-bold" style={{ background: tierObj.color }}>{tierObj.badge}</span>
+            Timeline rescaled for: {tierObj.label}
+          </span>
+        </div>
         <p className="text-gray-700 mb-4">
-          The document’s 11-action plan. The original timetable assumes a CISO with budget and a security team. The "Your tier" view rescales each action to what’s actually realistic for your size.
+          The document's 11-action plan. The original timetable assumes a CISO with budget and a security team. The "Your tier" view rescales each action to what's actually realistic for your size.
         </p>
         <div className="inline-flex rounded-lg overflow-hidden border-2 border-mtm-primary">
           <button

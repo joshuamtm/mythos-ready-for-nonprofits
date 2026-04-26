@@ -1,10 +1,12 @@
 import { useMemo, useEffect } from 'react'
 import { QUESTIONS, ANSWER_OPTIONS, scoreToProfile } from '../data/questions.js'
 import { ACTIONS } from '../data/actions.js'
+import { getTier } from '../data/tiers.js'
 
 const STORAGE_KEY = 'mythos-ready:self-assessment'
 
 export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
+  const tierObj = getTier(tier)
   useEffect(() => {
     if (Object.keys(answers).length > 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(answers))
@@ -42,7 +44,13 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
   return (
     <div className="space-y-6">
       <section className="bg-white rounded-lg shadow-card p-6">
-        <h2 className="text-2xl font-bold text-mtm-navy mb-2">Self-Assessment</h2>
+        <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
+          <h2 className="text-2xl font-bold text-mtm-navy">Self-Assessment</h2>
+          <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-mtm-cream text-mtm-navy font-semibold whitespace-nowrap">
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full text-white text-[9px] font-bold" style={{ background: tierObj.color }}>{tierObj.badge}</span>
+            Scoring calibrated for: {tierObj.label}
+          </span>
+        </div>
         <p className="text-gray-700 mb-2">
           The 10 questions the document poses to CISOs, adapted for any nonprofit IT or executive leader. Honest answers are more useful than aspirational ones. Some questions (notably #5 on code release gates) won't apply if your organization doesn't ship custom software — mark those <em>N/A</em>.
         </p>
@@ -52,9 +60,11 @@ export default function SelfAssessment({ tier, answers, setAnswers, setTab }) {
       </section>
 
       <section className="bg-mtm-cream rounded-lg p-5 border-l-4 border-mtm-accent">
-        <h3 className="text-base font-bold text-mtm-navy mb-1">Start here if you're brand new to this</h3>
+        <h3 className="text-base font-bold text-mtm-navy mb-1">{tier === 'small' ? 'You\'re probably new to this — and that\'s the most common starting point' : tier === 'medium' ? 'Honest is better than aspirational' : 'You\'ve probably already done some of this — calibrate against the gaps'}</h3>
         <p className="text-sm text-gray-800 leading-relaxed">
-          If most of your honest answers are <strong>"no,"</strong> that's fine. It's the most common starting point for small and mid-size nonprofits. "No" doesn't mean you're failing — it means you have an opportunity. The recommended actions section below will surface the specific places to start, sized for your tier. You don't need to do all of them. Pick one this quarter.
+          {tier === 'small' && (<>Most small nonprofits answer <strong>"no"</strong> to most of these questions, and that's normal. "No" doesn't mean you're failing — it means you have an opportunity, and the realistic next steps for an organization your size are smaller than the document implies. Pick one or two actions this quarter; that's a real win.</>)}
+          {tier === 'medium' && (<>Mid-size nonprofits typically answer <strong>"yes" or "partial"</strong> to a few of these and <strong>"no"</strong> to the rest. The recommended actions below will surface where to focus, sized for your tier. You don't need to do all of them — pick the two highest-leverage ones for the quarter.</>)}
+          {tier === 'large' && (<>Large nonprofits often answer <strong>"yes"</strong> or <strong>"partial"</strong> to most of these. The diagnostic value here is in the <strong>specifics of your "partial" answers</strong> — those are usually where the gap between policy and operational reality lives. Bring this profile to your next risk committee meeting.</>)}
         </p>
         <div className="flex items-center gap-4 flex-wrap">
           <div className="text-sm text-gray-600">
