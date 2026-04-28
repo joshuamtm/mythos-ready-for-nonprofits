@@ -8,7 +8,7 @@ export const RISKS = [
     severity: 'critical',
     title: 'Accelerated Threat Exploitation',
     subtitle: 'AI-autonomous exploit generation at machine speed',
-    description: 'AI models have been discovering vulnerabilities and creating exploits for over a year. Mythos accelerates this significantly, but the capability predates it. What changes is the speed, scale, and the reduction in skill required to execute complex attacks, democratizing capabilities that were previously expensive and skill-intensive. Non-frontier, open-weight models can already achieve much of this at an accessible cost. Each patch also becomes an exploit blueprint, as AI accelerates patch-diffing and reverse engineering of fixes.',
+    description: 'AI models have been discovering vulnerabilities and creating exploits for over a year. Mythos accelerates this significantly, but the capability predates it. What changes is the speed, scale, and the reduction in skill required to execute complex attacks, democratizing capabilities that were previously expensive and skill-intensive. Non-frontier, open-weight models can already achieve much of this at an accessible cost. Each patch also becomes an exploit blueprint, as AI accelerates patch-diffing and reverse engineering of fixes. Note: the published exploit-generation numbers (181 Firefox exploits, ~90× the prior model) were produced with effectively no scaffolding — a basic "play this CTF" prompt. Treat those as a floor, not a ceiling; properly harnessed agents will produce more.',
     type: 'Threat',
     frameworks: ['AML.T0040', 'AML.T0043', 'PR.PS', 'PR.IR'],
     mapsToActions: [4, 5],
@@ -59,8 +59,8 @@ export const RISKS = [
     mapsToActions: [9, 10],
     nonprofitTranslation: {
       small: 'You won\'t detect a sophisticated attack in real time. Accept this. Your defense is recovery: tested backups, documented incident contacts, an MSP relationship that can mobilize on a phone call.',
-      medium: 'Your MSP\'s SOC (if you have one) needs an SLA review. If alert triage takes hours, that\'s no longer acceptable. Pre-authorize containment actions (account disable, network isolation) so the SOC doesn\'t wait for you at 3am.',
-      large: 'Pre-authorized containment is now a hard requirement. Asset and user behavioral analysis. Response playbooks that execute at machine speed for known attack patterns. Tabletop exercises monthly, not annually.',
+      medium: 'Your MSP\'s SOC (if you have one) needs an SLA review. If alert triage takes hours, that\'s no longer acceptable. Pre-authorize containment actions (account disable, network isolation) so the SOC doesn\'t wait for you at 3am. At your next tabletop, deliberately stack two or three high-severity incidents at once — that scenario is what AI-speed attacks make plausible.',
+      large: 'Pre-authorized containment is now a hard requirement. Asset and user behavioral analysis. Response playbooks that execute at machine speed for known attack patterns. Run tabletop exercises monthly with a specific stress test: how would you handle three simultaneous high-severity incidents? The honest answer ("we can\'t") becomes the basis for the resource ask.',
     },
   },
   {
