@@ -9,12 +9,12 @@ export const ACTIONS = [
     severity: 'critical',
     originalStart: 'This week',
     originalHorizon: 'Ongoing',
-    description: 'Turn agents and LLM capabilities inward on your own code and dependencies. Start immediately by asking an agent for a security review of any code, then build toward a full audit within your CI/CD pipeline, and shift left by adding capabilities directly into developers\' coding agents. All code (human or AI-generated) should pass LLM-driven security review before merge.',
-    tools: 'Commercial: Claude Code Security (Anthropic), Codex Security (OpenAI). Open source: OpenAnt (Knostic), raptor (Claude Code framework), exploitation-validator agentic skill, agentic skills from Trail of Bits.',
+    description: 'Turn agents and LLM capabilities inward on your own code and dependencies. Start immediately by asking an agent for a security review of any code, then build toward a full audit within your CI/CD pipeline, and shift left by adding capabilities directly into developers\' coding agents. All code (human or AI-generated) should pass LLM-driven security review before merge. For nonprofits especially: this includes vibe-coded apps (Lovable, Cursor, Bolt, Replit, v0, Claude Code) built by non-developers — that\'s now the dominant nonprofit code path, not traditional CI/CD.',
+    tools: 'Commercial: Claude Code Security (Anthropic), Codex Security (OpenAI). Open source: OpenAnt (Knostic), raptor (Claude Code framework), exploitation-validator agentic skill, agentic skills from Trail of Bits. For vibe-coded apps: ask Claude or ChatGPT directly — "review this code for security issues, particularly around auth, data handling, and PII exposure" — before sharing externally.',
     nonprofitTimeline: {
-      small: { start: 'When you next ship code', horizon: 'Ongoing', note: 'Skip if you don\'t ship code. Otherwise, ask the developer to use Claude Code or Copilot review.' },
-      medium: { start: 'Next 30 days', horizon: '90 days', note: 'Claude for Nonprofits (~$8/seat/month via TechSoup) or GitHub Copilot ($10-19/seat/month) covers most volume.' },
-      large: { start: 'This week', horizon: 'Ongoing', note: 'Same timeline as for-profits. Mandatory in CI/CD.' },
+      small: { start: 'This week', horizon: 'Ongoing', note: 'You probably already ship code via vibe coding. For each vibe-coded app: paste the code into Claude or ChatGPT and ask for a security review focused on auth, data handling, and PII. No PII in unreviewed apps. Cost: $0 if you already have a paid AI account.' },
+      medium: { start: 'Next 30 days', horizon: '90 days', note: 'Two-track. (1) Vibe-coded apps: register + AI-assisted security review before any PII exposure or public release. (2) Any traditional dev: Claude for Nonprofits (~$8/seat/month via TechSoup) or GitHub Copilot ($10-19/seat/month) covers most volume.' },
+      large: { start: 'This week', horizon: 'Ongoing', note: 'Mandatory LLM-driven review in CI/CD. Same enforcement extended to vibe-coded apps from non-IT staff — these need to be inventoried and reviewed, not ignored.' },
     },
   },
   {
@@ -97,8 +97,8 @@ export const ACTIONS = [
     originalHorizon: '90 days',
     description: 'Make use of, update, or create an inventory. Using agents, the process can be significantly accelerated and enable continuous updates. Start with critical internet-facing systems, build toward a full-coverage inventory over 45 days. Generate real SBOMs. Aggressively shut down unneeded or unmaintained functionality, phase out suppliers that no longer comply with your updated vulnerability management requirements, and isolate or airgap at-risk systems. You cannot patch, segment, or defend what you don\'t know exists.',
     nonprofitTimeline: {
-      small: { start: 'Next 90 days', horizon: '6 months', note: 'Spreadsheet inventory: every system, every login, every vendor with access. Update twice a year. MTM Sentinel for the external view.' },
-      medium: { start: 'Next 60 days', horizon: '6 months', note: 'Cloud asset discovery, monthly audit log review, shadow-IT discovery via SaaS spend or DNS logs. MTM Sentinel + internal scan.' },
+      small: { start: 'Next 90 days', horizon: '6 months', note: 'Spreadsheet inventory: every system, every login, every vendor with access, and every vibe-coded app your staff has built (Lovable, Cursor, Bolt, Replit, v0, Claude Code outputs). Update twice a year. MTM Sentinel for the external view.' },
+      medium: { start: 'Next 60 days', horizon: '6 months', note: 'Cloud asset discovery, monthly audit log review, shadow-IT discovery via SaaS spend or DNS logs. Add a vibe-coded-app register — which staff built what, where it\'s hosted, what data it touches. MTM Sentinel + internal scan.' },
       large: { start: 'This month', horizon: '90 days', note: 'Continuous asset discovery, automated SBOM generation, third-party SaaS inventory tied to TPRM, quarterly attack surface scan.' },
     },
   },
