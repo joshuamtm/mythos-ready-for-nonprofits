@@ -163,7 +163,7 @@ function generateBriefing({ sector, tier, tierObj, score, topActions, briefer, h
 **Date:** ${date}
 **Briefer:** ${briefer || '[Briefer name]'}
 **Audience:** Board of Directors
-**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, April 18, 2026 — https://labs.cloudsecurityalliance.org/mythos-ciso/
+**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, April 12, 2026 (v1.0 May 1, 2026) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 
 ---
 
@@ -182,6 +182,8 @@ The capability — AI finding novel vulnerabilities and generating exploits — 
 1. **The cost floor for offense dropped.** Capabilities that previously required nation-state resources are accessible at consumer pricing.
 2. **The window between disclosure and weaponization is hours, not months.** Quarterly patch cycles cannot keep up.
 3. **The asymmetry is permanent.** AI tools accelerate offense more than defense, at least for the next 12-24 months.
+
+Important caveat from the v1.0 paper: this is a leading indicator, not a damage measure. Most actual breaches today still come from credential abuse, phishing, and supply chain compromise — not zero-day exploitation. The basics still pay disproportionate dividends.
 
 ---
 
@@ -228,7 +230,7 @@ We considered and chose not to recommend the following, to be transparent with t
 
 ## Source materials
 
-- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 18, 2026 (CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
+- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 12, 2026 (v1.0, May 1, 2026; CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 - Anthropic, *Claude Mythos Preview* and *Project Glasswing,* April 7, 2026
 - Wendy Nather, *"The Cyber Poverty Line"* (referenced in the working group document)
 - This briefing was generated using the Mythos-ready for Nonprofits translator at Meet the Moment.

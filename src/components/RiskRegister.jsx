@@ -77,9 +77,6 @@ export default function RiskRegister({ tier }) {
                     <p className="text-sm text-gray-600 italic">{risk.subtitle}</p>
                     <div className="flex gap-2 flex-wrap mt-2">
                       <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded">{risk.type}</span>
-                      {risk.frameworks.map((f) => (
-                        <span key={f} className="text-xs px-2 py-0.5 bg-mtm-cream text-mtm-navy rounded font-mono">{f}</span>
-                      ))}
                     </div>
                   </div>
                   <span className="text-mtm-primary text-2xl flex-shrink-0">{isOpen ? '−' : '+'}</span>
@@ -99,6 +96,14 @@ export default function RiskRegister({ tier }) {
                     <p className="text-xs text-gray-500 mt-3">
                       Maps to Priority Action{risk.mapsToActions.length > 1 ? 's' : ''}: {risk.mapsToActions.join(', ')}
                     </p>
+                  )}
+                  {risk.frameworks.length > 0 && (
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <span className="text-xs uppercase tracking-widest text-gray-500 font-semibold">Framework crosswalk:</span>
+                      {risk.frameworks.map((f) => (
+                        <span key={f} className="text-xs px-2 py-0.5 bg-mtm-cream text-mtm-navy rounded font-mono">{f}</span>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}

@@ -1,5 +1,5 @@
 // Source: CSA / SANS / [un]prompted / OWASP — "AI Vulnerability Storm: Building a Mythos-ready Security Program"
-// (April 18, 2026 · v0.95). 13-row risk register.
+// (Original release April 12, 2026; v1.0 last updated May 1, 2026). 13-row risk register.
 // Nonprofit translations added by Meet the Moment.
 
 export const RISKS = [
@@ -83,7 +83,7 @@ export const RISKS = [
     severity: 'high',
     title: 'Incomplete Asset and Exposure Inventory',
     subtitle: 'Unknown attack surface, assets, code, dependencies, shadow agents',
-    description: 'AI-accelerated attacker capabilities change which assets are at highest risk and which controls matter most. Attackers can now scan an entire OS codebase at accessible cost and enumerate your exposure faster than you can inventory it. For assets that cannot be patched or directly defended, inventory determines whether you can segment, isolate, or monitor them. Without continuously updated inventory, controls have inherent gaps. The proliferation of coding agents to non-developer users further fragments central IT visibility — vibe-coded apps (Lovable, Cursor, Bolt, Replit, v0, Claude Code outputs) created by program, comms, or executive staff often live outside any managed inventory and represent a growing shadow attack surface.',
+    description: 'AI-accelerated attacker capabilities change which assets are at highest risk and which controls matter most. Attackers can now scan an entire OS codebase at accessible cost and enumerate your exposure faster than you can inventory it. For assets that cannot be patched or directly defended, inventory determines whether you can segment, isolate, or monitor them. Without continuously updated inventory, controls have inherent gaps. The proliferation of coding agents to non-developer users further fragments central IT visibility — vibe-coded apps (Lovable, Cursor, Bolt, Replit, v0, Claude Code outputs) created by program, comms, or executive staff often live outside any managed inventory and represent a growing shadow attack surface. The April 20, 2026 Lovable disclosure made this concrete: a BOLA flaw exposed the source code and chat history (often containing pasted credentials and donor data) of every public Lovable project created between February 3 and April 20 to any other Lovable user with a project link.',
     type: 'Vulnerability',
     frameworks: ['ASI04', 'AML.T0000', 'ID.AM', 'GV.SC'],
     mapsToActions: [7],
