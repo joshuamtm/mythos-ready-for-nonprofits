@@ -18,6 +18,15 @@ export default function Header({ tab, setTab }) {
               <p className="text-sm text-mtm-softBlue">An MTM working tool · Internal preview · Not yet for public release</p>
             </div>
           </div>
+          {__LAST_UPDATED_DISPLAY__ && (
+            <div
+              className="bg-white/10 border border-white/20 rounded px-4 py-2 text-right"
+              title={__LAST_UPDATED_ISO__ || ''}
+            >
+              <div className="text-[11px] uppercase tracking-widest text-mtm-softBlue">Last updated</div>
+              <div className="text-base font-semibold leading-tight">{__LAST_UPDATED_DISPLAY__}</div>
+            </div>
+          )}
         </div>
         <nav className="mt-5 flex flex-wrap gap-2">
           {tabs.map((t) => (
