@@ -163,7 +163,7 @@ function generateBriefing({ sector, tier, tierObj, score, topActions, briefer, h
 **Date:** ${date}
 **Briefer:** ${briefer || '[Briefer name]'}
 **Audience:** Board of Directors
-**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, April 12, 2026 (v1.0 May 1, 2026) — https://labs.cloudsecurityalliance.org/mythos-ciso/
+**Source:** "AI Vulnerability Storm: Building a Mythos-ready Security Program" — CSA / SANS / [un]prompted / OWASP, v1.0 (April 18, 2026) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 
 ---
 
@@ -230,7 +230,7 @@ We considered and chose not to recommend the following, to be transparent with t
 
 ## Source materials
 
-- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* April 12, 2026 (v1.0, May 1, 2026; CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
+- CSA / SANS / [un]prompted / OWASP, *"The AI Vulnerability Storm: Building a Mythos-ready Security Program,"* v1.0, dated April 18, 2026 (CC BY-NC 4.0) — https://labs.cloudsecurityalliance.org/mythos-ciso/
 - Anthropic, *Claude Mythos Preview* and *Project Glasswing,* April 7, 2026
 - Wendy Nather, *"The Cyber Poverty Line"* (referenced in the working group document)
 - This briefing was generated using the Mythos-ready for Nonprofits translator at Meet the Moment.

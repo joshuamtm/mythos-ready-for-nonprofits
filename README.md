@@ -1,6 +1,6 @@
 # Mythos-ready for Nonprofits
 
-An MTM working tool that translates the CSA / SANS / [un]prompted / OWASP briefing **"The AI Vulnerability Storm: Building a Mythos-ready Security Program"** (April 18, 2026, v0.95) for nonprofits operating at or below the Cyber Poverty Line.
+An MTM working tool that translates the CSA / SANS / [un]prompted / OWASP briefing **"The AI Vulnerability Storm: Building a Mythos-ready Security Program"** (v1.0, dated April 18, 2026) for nonprofits operating at or below the Cyber Poverty Line.
 
 ## What it does
 
@@ -45,6 +45,10 @@ The original document is licensed CC BY-NC 4.0 and authored by 50+ CISOs through
 
 - LinkedIn carousel and Solve Tuesday piece (already flagged in Lens log April 25)
 - Both should drive traffic to this app, not stand alone
+
+## Keeping content current
+
+Dashboard content drifts from reality as new incidents, paper versions, and tool releases land. The refresh cadence is twice weekly (Monday + Thursday mornings) via a scheduled Claude agent that drafts a changelog for Joshua to review. See [`AUTOMATION.md`](./AUTOMATION.md) for the full process and [`scripts/CHANGELOG.md`](./scripts/CHANGELOG.md) for the running content log.
 
 ## License
 
