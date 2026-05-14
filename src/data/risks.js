@@ -178,8 +178,8 @@ export const RISKS = [
     frameworks: ['GV.OC', 'GV.RM', 'GV.RR'],
     mapsToActions: [1, 4],
     nonprofitTranslation: {
-      small: 'EU AI Act doesn\'t apply unless you operate in the EU. State data-breach laws (NY SHIELD, CA CCPA, MA 201 CMR 17, etc.) do. HIPAA if you handle health data. Annual policy review, board attestation. Document your reasoning.',
-      medium: 'If you operate in NY, CA, or any state with breach-notification laws (most do): document your reasonableness argument. What controls? What scanning? What gaps and why? This becomes your defensible position.',
+      small: 'EU AI Act doesn\'t apply unless you operate in the EU. State data-breach laws (NY SHIELD, CA CCPA, MA 201 CMR 17, etc.) do. HIPAA if you handle health data. Annual policy review, board attestation. Document your reasoning. One more shift to watch: your cyber-insurance carrier. Insurers are starting to treat AI security tooling the way they treat smoke detectors — something they require before they\'ll cover you. Expect your next renewal questionnaire to ask whether you run security scans or use AI-assisted code review. Answering those questions ahead of renewal is cheaper than scrambling at it.',
+      medium: 'If you operate in NY, CA, or any state with breach-notification laws (most do): document your reasonableness argument. What controls? What scanning? What gaps and why? This becomes your defensible position. Watch your cyber-insurance renewal as closely as the breach laws. Carriers are moving toward requiring state-of-the-art security tooling — AI-assisted scanning and code review — as a condition of coverage, not just a discount. The reasonableness argument you\'re documenting is also your insurance argument: the same evidence that defends you in a claim is what keeps your premium and coverage intact. Treat the renewal questionnaire as a forcing function, not paperwork.',
       large: 'Formal "reasonable defensive effort" position documented annually. AI tools used for defensive scanning logged. Board minutes reflect awareness of AI-accelerated threat landscape. Insurance carrier conversations updated.',
     },
   },

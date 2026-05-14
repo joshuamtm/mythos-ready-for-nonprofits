@@ -4,6 +4,22 @@ Tracks what changed in the dashboard, when, and why. The `Last updated` chip in 
 
 ---
 
+## 2026-05-14 — Risk 12: insurance as a forcing function
+
+**Trigger:** Lens analysis of the *Your Undivided Attention* episode "Anthropic's Mythos Has Changed Cybersecurity Forever" (CHT; Tristan Harris with Josephine Wolff and Fred Heiding). Wolff's "smoke-detector" framing surfaced a content gap.
+
+**Paper version:** v1.0, April 18, 2026 (unchanged).
+
+### Findings rolled in
+
+1. **Cyber insurance as a forcing function.** The dashboard already covered insurance as a *liability conversation* (BoardBriefing point 5; Risk 12 large-tier translation). It did not cover the forward-looking mechanism Wolff describes: insurers moving toward *requiring* state-of-the-art AI security tooling as a *condition of coverage* — the "smoke detector" dynamic. Added to Risk 12's small and medium `nonprofitTranslation` strings. Small tier: expect renewal questionnaires to ask about scanning / AI-assisted review. Medium tier: the reasonableness argument is also the insurance argument; treat the renewal questionnaire as a forcing function. Large tier left unchanged — it already references carrier conversations, and the forcing-function pressure lands hardest on lower-leverage orgs. Source: *Your Undivided Attention*, "Anthropic's Mythos Has Changed Cybersecurity Forever. What Now?" (humanetech.com).
+
+### Build verified
+
+`npm run build` clean. 41 modules, 300.42 kB JS bundle (94.24 kB gzipped). No behavior change to assessment scoring or the board-briefing generator — data-string content only.
+
+---
+
 ## 2026-05-13 — First post-v1.0 refresh
 
 **Trigger:** Joshua-initiated refresh, ahead of the scheduled-agent rollout.
